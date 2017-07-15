@@ -13,16 +13,14 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
-
 @Component
 public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
-	//private static final String FILE_NAME = "/WEB-INF/familytree.csv";
+	// private static final String FILE_NAME = "/WEB-INF/familytree.csv";
 
 	private List<People> familymembers = new ArrayList<>();
 	private List<People> searchresults = new ArrayList<>();
@@ -67,9 +65,12 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	public List<People> getPeopleByRelation(String relation) {
 		searchresults.clear();
 		for (People people : familymembers) {
+			
+			if ((people.getRelation() != null)){
 			if ((people.getRelation().contains(relation))) {
 				searchresults.add(people);
 			}
+		}
 		}
 		return searchresults;
 	}
@@ -103,7 +104,6 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 			}
 		}
-		familymembers.add(people);
 		try {
 			FileWriter fw = new FileWriter((wac.getServletContext()).getRealPath("output.csv"));
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -118,6 +118,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		}
 		return familymembers;
 	}
+
 	public List<People> getSearchresults() {
 		return searchresults;
 	}
@@ -125,23 +126,23 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	@Override
 	public List<People> CurrentTree() {
 		try (InputStream is = wac.getServletContext().getResourceAsStream("output.csv");
-		BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
-	String line = buf.readLine();
-	while ((line = buf.readLine()) != null) {
-		String[] tokens = line.split(",");
-		String relation = tokens[0];
-		String fname = tokens[1];
-		String lname = tokens[2];
-		//String sex = tokens[4];
-		int age = Integer.parseInt(tokens[3]);
-		familymembers.add(new People(age, relation, fname, lname));
-		System.out.println(familymembers);
-	}
-	buf.close();
-} catch (Exception e) {
-	System.err.println(e);
-}	
+				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
+			String line = buf.readLine();
+			while ((line = buf.readLine()) != null) {
+				String[] tokens = line.split(",");
+				String relation = tokens[0];
+				String fname = tokens[1];
+				String lname = tokens[2];
+				// String sex = tokens[4];
+				int age = Integer.parseInt(tokens[3]);
+				familymembers.add(new People(age, relation, fname, lname));
+				System.out.println(familymembers);
+			}
+			buf.close();
+		} catch (Exception e) {
+			System.err.println(e);
+		}
 		return familymembers;
 	}
-	
+
 }
