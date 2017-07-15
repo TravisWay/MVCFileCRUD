@@ -18,6 +18,7 @@
 			<p>No person found</p>
 		</c:otherwise>
 	</c:choose>
-  
+	<br><br><br>
+  <a href="index.html">Go back</a>
   </body>
 </html>

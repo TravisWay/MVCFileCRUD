@@ -4,10 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.print.attribute.standard.PrinterMessageFromOperator;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,13 +34,12 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 			while ((line = buf.readLine()) != null) {
 				String[] tokens = line.split(",");
 				int id = Integer.parseInt(tokens[0]);
-				String title = tokens[1].toLowerCase();
-				String relation = tokens[2].toLowerCase();
-				String fname = tokens[3];
-				String lname = tokens[4];
-				String sex = tokens[5];
-				int age = Integer.parseInt(tokens[6]);
-				familymembers.add(new People(id, title, age, relation, fname, lname, sex));
+				String relation = tokens[1];
+				String fname = tokens[2];
+				String lname = tokens[3];
+				String sex = tokens[4];
+				int age = Integer.parseInt(tokens[5]);
+				familymembers.add(new People(id, age, relation, fname, lname, sex));
 				System.out.println(familymembers);
 			}
 		} catch (Exception e) {
@@ -61,7 +62,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	public List<People> getPeopleByRelation(String relation) {
 		searchresults.clear();
 		for (People people : familymembers) {
-			if ((people.getRelation().contains(relation.toLowerCase()))) {
+			if ((people.getRelation().contains(relation))) {
 				searchresults.add(people);
 			}
 		}
@@ -71,18 +72,23 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	@Override
 	public List<People> addPeople(People people) {
 		familymembers.add(people);
-		
+
 		return familymembers;
 	}
 
 	@Override
 	public List<People> killPeople(People people) {
-		familymembers.remove(people);
+		Iterator<People> iter = familymembers.iterator();
+		while (iter.hasNext()) {
+		    People people1 = iter.next();
+			
+			if ((people1.getFname()).equals(people.getFname()) && (people1.getLname()).equals(people.getLname())){
+				iter.remove();
+				
+			}
+		}
 		return familymembers;
 	}
-
-	
-
 
 	public List<People> getSearchresults() {
 		return searchresults;
@@ -91,10 +97,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	@Override
 	public List<People> CurrentTree() {
 		return familymembers;
-		
+
 	}
-
-	
-
 
 }

@@ -31,22 +31,22 @@ public class crudController {
 	    return mv;
 	  }
 	@RequestMapping(path="searchrelation.do", method=RequestMethod.GET)
-	  public ModelAndView getPeopleByRelation(@RequestParam("data1") String s) {
+	  public ModelAndView getPeopleByRelation(@RequestParam("relation") String s) {
 	    ModelAndView mv = new ModelAndView();
 	    mv.setViewName("result.jsp");
 	    mv.addObject("result", familyTreeDAO.getPeopleByRelation(s));
 	    return mv;
 	  }
-	@RequestMapping(path="addmember.do", method=RequestMethod.GET)
-	  public ModelAndView addMember(@RequestParam("addmember1") People people) {
+	@RequestMapping(path="addpeople.do", method=RequestMethod.GET)
+	  public ModelAndView addMember(People people) {
 	    ModelAndView mv = new ModelAndView();
 	    familyTreeDAO.addPeople(people);
 	    mv.setViewName("result.jsp");
 	    mv.addObject("result", familyTreeDAO.CurrentTree());
 	    return mv;
 	  }
-	@RequestMapping(path="killmember.do", method=RequestMethod.GET)
-	public ModelAndView killMember(@RequestParam("killmember1") People people) {
+	@RequestMapping(path="killpeople.do", method=RequestMethod.GET)
+	public ModelAndView killMember(People people) {
 		ModelAndView mv = new ModelAndView();
 		familyTreeDAO.killPeople(people);
 		mv.setViewName("result.jsp");
