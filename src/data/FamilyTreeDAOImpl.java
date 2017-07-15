@@ -32,12 +32,13 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 			while ((line = buf.readLine()) != null) {
 				String[] tokens = line.split(",");
 				int id = Integer.parseInt(tokens[0]);
-				String relation = tokens[1];
-				String fname = tokens[2];
-				String lname = tokens[3];
-				String sex = tokens[4];
-				int age = Integer.parseInt(tokens[5]);
-				familymembers.add(new People(id, age, relation, fname, lname, sex));
+				String title = tokens[1].toLowerCase();
+				String relation = tokens[2].toLowerCase();
+				String fname = tokens[3];
+				String lname = tokens[4];
+				String sex = tokens[5];
+				int age = Integer.parseInt(tokens[6]);
+				familymembers.add(new People(id, title, age, relation, fname, lname, sex));
 				System.out.println(familymembers);
 			}
 		} catch (Exception e) {
@@ -47,6 +48,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 	@Override
 	public List<People> getPeopleByName(String name) {
+		searchresults.clear();
 		for (People people : familymembers) {
 			if ((people.getFname().equals(name)) || (people.getLname().equals(name))) {
 				searchresults.add(people);
@@ -57,8 +59,9 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 	@Override
 	public List<People> getPeopleByRelation(String relation) {
+		searchresults.clear();
 		for (People people : familymembers) {
-			if ((people.getRelation().equals(relation)) || (people.getRelation().equals(relation))) {
+			if ((people.getRelation().contains(relation.toLowerCase()))) {
 				searchresults.add(people);
 			}
 		}

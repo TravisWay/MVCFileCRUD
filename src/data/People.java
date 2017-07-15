@@ -3,17 +3,24 @@ package data;
 public class People {
 
 	private int id,age;
-	private String relation,fname,lname,sex;
-	public People(int id, int age, String relation, String fname, String lname, String sex) {
+	private String relation,fname,lname,sex,title;
+	public People(int id, String title, int age,String relation, String fname, String lname, String sex) {
 		this.id = id;
 		this.age = age;
+		this.sex = sex;
 		this.relation = relation;
 		this.fname = fname;
 		this.lname = lname;
-		this.sex = sex;
+		this.title = title;
 	}
 	public int getId() {
 		return id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public void setId(int id) {
 		this.id = id;
