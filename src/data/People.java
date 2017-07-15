@@ -8,6 +8,14 @@ public class People {
 	public People(){
 		
 	}
+	
+	public People(int age, String relation, String fname, String lname) {
+		this.age = age;
+		this.relation = relation;
+		this.fname = fname;
+		this.lname = lname;
+	}
+
 	public People(int id, int age, String relation, String fname, String lname, String sex) {
 		this.id = id;
 		this.age = age;
@@ -92,11 +100,12 @@ public class People {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(relation +", ");
-		builder.append(fname+ " ");
+		builder.append(relation +",");
+		builder.append(fname+",");
 		builder.append(lname);
-		builder.append(", age=");
+		builder.append(",");
 		builder.append(age);
+		builder.append(System.getProperty("line.separator"));
 		return (builder.toString());
 	}
 

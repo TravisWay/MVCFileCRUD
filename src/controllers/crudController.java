@@ -1,5 +1,8 @@
 package controllers;
 
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,42 +18,47 @@ import data.People;
 public class crudController {
 	@Autowired
 	private FamilyTreeDAO familyTreeDAO;
-	//example
+
 	@RequestMapping(path="searchname.do", method=RequestMethod.GET)
-	  public ModelAndView getPeopleByName(@RequestParam("data") String s) {
+	  public ModelAndView getPeopleByName(@RequestParam("data") String s, HttpSession session) {
 	    ModelAndView mv = new ModelAndView();
 	    mv.setViewName("result.jsp");
 	    mv.addObject("result", familyTreeDAO.getPeopleByName(s));
+	    
 	    return mv;
 	  }
 	@RequestMapping(path="viewtree.do", method=RequestMethod.GET)
-	  public ModelAndView getlist() {
+	  public ModelAndView getlist(HttpSession session) {
 	    ModelAndView mv = new ModelAndView();
 	    mv.setViewName("result.jsp");
 	    mv.addObject("result", familyTreeDAO.CurrentTree());
 	    return mv;
 	  }
 	@RequestMapping(path="searchrelation.do", method=RequestMethod.GET)
-	  public ModelAndView getPeopleByRelation(@RequestParam("relation") String s) {
+	  public ModelAndView getPeopleByRelation(@RequestParam("relation") String s, HttpSession session) {
 	    ModelAndView mv = new ModelAndView();
 	    mv.setViewName("result.jsp");
 	    mv.addObject("result", familyTreeDAO.getPeopleByRelation(s));
+	    
 	    return mv;
 	  }
 	@RequestMapping(path="addpeople.do", method=RequestMethod.GET)
-	  public ModelAndView addMember(People people) {
+	  public ModelAndView addMember(People people,HttpSession session) {
 	    ModelAndView mv = new ModelAndView();
 	    familyTreeDAO.addPeople(people);
 	    mv.setViewName("result.jsp");
 	    mv.addObject("result", familyTreeDAO.CurrentTree());
+	    session.setAttribute("result", familyTreeDAO.CurrentTree());
+	    
 	    return mv;
 	  }
 	@RequestMapping(path="killpeople.do", method=RequestMethod.GET)
-	public ModelAndView killMember(People people) {
+	public ModelAndView killMember(People people,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		familyTreeDAO.killPeople(people);
 		mv.setViewName("result.jsp");
 		mv.addObject("result", familyTreeDAO.CurrentTree());
+		
 		return mv;
 	}
 
