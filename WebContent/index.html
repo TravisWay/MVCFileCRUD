@@ -2,12 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Family Tree</title>
   </head>
+  <head>Family Tree</head>
   <body>
-    <form action="route.do" method="GET">
+  	Search by Name
+    <form action="searchname.do" method="GET">
       <input type="text" name="data" /><br />
-      <input type="submit" value="Submit" /><br />
+      <input type="submit" value="Search" /><br />
+    </form>
+   	Look at the current Family Tree
+    <form action="viewtree.do" method="GET">
+      <input type="submit" value="View" /><br />
+    </form>
+    Search for Relation to you
+    <form action="searchrelation" method="GET">
+      <input type="text" name="data" /><br />
+      <input type="submit" value="Search" /><br />
+    </form>
+    Add a Family Member
+    <form action="addmemeber" method="GET">
+      <input type="submit" value="Add" /><br />
+    </form>
+    Delete a Family Member
+    <form action="killmember" method="GET">
+      <input type="text" name="data" /><br />
+      <input type="submit" value="Delete" /><br />
     </form>
   </body>
 </html>

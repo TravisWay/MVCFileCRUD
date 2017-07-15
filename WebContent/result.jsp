@@ -7,7 +7,17 @@
     <meta charset="UTF-8">
     <title>View</title>
   </head>
-  <body>
-    <p>The result is: ${result}.0</p>
+  <body>	
+  
+  <c:choose>
+		<c:when test="${! empty result}">
+			${result}
+			
+		</c:when>
+		<c:otherwise>
+			<p>No person found</p>
+		</c:otherwise>
+	</c:choose>
+  
   </body>
 </html>

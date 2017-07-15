@@ -1,0 +1,15 @@
+id,Relation,Fname,Lname,Sex,Age
+1,You,Travis,Way,Male,34
+2,Your Sibling,Another,Way,Female,32
+3,Your Sibling,Another,Way,Female,56
+4,Your Sibling,Another,Way,Female,102
+5,Your Sibling,Another,Way,Female,12
+6,Your Sibling,Another,Way,Male,23
+7,Your Spouse,Morgan,Way,Female,27
+8,Your Parent,Another,Way,Male,65
+9,Your Parent Spouse,Another,Way,Female,60
+10,Your Parent Parent,Another,Way,Male,89
+11,Your Parent Parent,Another,Way,Female,87
+12,Your Parent Spouse Parent,Another,Way,Male,89
+13,Your Parent Spouse Parent,Another,Way,Female,87
+14,Your Child,Evelyn,Way,Female,2
