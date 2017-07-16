@@ -10,17 +10,18 @@
   <body>	
   
   <c:choose>
-		<c:when test="${! empty result}">
-			<c:forEach items="${result}" var="item">
-    ${item}<br>
-</c:forEach>
+		<c:when test="${result}">
 			
+	This Member is now deleted from the Family Tree
 		</c:when>
 		<c:otherwise>
+		
 			<p>No person found</p>
 		</c:otherwise>
 	</c:choose>
 	<br><br><br>
   <a href="index.html">Go back</a>
+  <br>
+  
   </body>
 </html>

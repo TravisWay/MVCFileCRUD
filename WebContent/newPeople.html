@@ -6,12 +6,12 @@
 </head>
 <body>
 	<h3>Add a Family Member</h3>
-	<form action="addpeople.do" method="GET">
+	<form action="addpeople.do" method="POST">
 	
   	<br><br><br>
 		Name
-		<input type="text" name="lname" value="First Name"/>
-		<input type="text" name="fname" value="Last Name"/><br><br>
+		<input type="text" name="fname" value="First Name"/>
+		<input type="text" name="lname" value="Last Name"/><br><br>
 	Relation to You
 		<select name="relation">
   <option value="You">You</option>
@@ -26,14 +26,14 @@
   <option value="Niece">Niece</option>
   <option value="Nephew">Nephew</option>
   <option value="Cousin">Cousin</option>
-  <option value="Grandmother mother">Grandma(mother's side)</option>
-  <option value="Grandmother father">Grandma(father's side)</option>
-  <option value="Grandfather mother">Grandfather(mother's side)</option>
-  <option value="Grandfather father">Grandfather(mother's side)</option>
-  <option value="GreatGrandmother mother">GreatGrandma(mother's side)</option>
-  <option value="GreatGrandmother father">GreatGrandma(father's side)</option>
-  <option value="GreatGrandfather mother">GreatGrandfather(mother's side)</option>
-  <option value="GreatGrandfather father">GreatGrandfather(mother's side)</option>
+  <option value="Grandmother M">Grandma(mother's side)</option>
+  <option value="Grandmother F">Grandma(father's side)</option>
+  <option value="Grandfather M">Grandfather(mother's side)</option>
+  <option value="Grandfather F">Grandfather(father's side)</option>
+  <option value="GreatGrandmother M">GreatGrandma(mother's side)</option>
+  <option value="GreatGrandmother F">GreatGrandma(father's side)</option>
+  <option value="GreatGrandfather M">GreatGrandfather(mother's side)</option>
+  <option value="GreatGrandfather F">GreatGrandfather(father's side)</option>
   	</select><br><br>
 		Age
 		<input type="number" name="age" value="0"/><br/><br>

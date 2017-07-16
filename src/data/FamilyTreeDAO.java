@@ -9,8 +9,8 @@ public interface FamilyTreeDAO {
 	
 	 public List<People> getPeopleByName(String name);
 	  public List<People> getPeopleByRelation(String relation);
-	  public List<People> addPeople(People people);
-	  public List<People> killPeople(People people);
+	  public People addPeople(People people);
+	  public boolean killPeople(People people);
 	  
 	  public List<People> CurrentTree();
 	 

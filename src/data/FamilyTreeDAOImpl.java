@@ -30,24 +30,25 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 	@PostConstruct
 	public void init() {
-		try {
-			FileWriter fw = new FileWriter((wac.getServletContext()).getRealPath("output.csv"));
-			BufferedWriter bw = new BufferedWriter(fw);
-
-			for (People people2 : familymembers) {
-
-				bw.write(people2.toString());
-				System.out.println("Done");
-			}
-
-			bw.close();
-			fw.close();
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		}
+		// try {
+		// FileWriter fw = new
+		// FileWriter((wac.getServletContext()).getRealPath("/WEB-INF/familytree.csv"));
+		// BufferedWriter bw = new BufferedWriter(fw);
+		//
+		// for (People people2 : familymembers) {
+		//
+		// bw.write(people2.toString());
+		// System.out.println("Done");
+		// }
+		//
+		// bw.close();
+		// fw.close();
+		//
+		// } catch (IOException e) {
+		//
+		// e.printStackTrace();
+		//
+		// }
 	}
 
 	@Override
@@ -65,21 +66,24 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	public List<People> getPeopleByRelation(String relation) {
 		searchresults.clear();
 		for (People people : familymembers) {
-			
-			if ((people.getRelation() != null)){
-			if ((people.getRelation().contains(relation))) {
-				searchresults.add(people);
+
+			if ((people.getRelation() != null)) {
+				if ((people.getRelation().contains(relation))) {
+					searchresults.add(people);
+				}
 			}
-		}
 		}
 		return searchresults;
 	}
 
 	@Override
-	public List<People> addPeople(People people) {
+	public People addPeople(People people) {
+		readFile();
 		familymembers.add(people);
+		File file = new File(((wac.getServletContext()).getRealPath("/WEB-INF/familytree2.csv")));
+		File file2 = new File(((wac.getServletContext()).getRealPath("/WEB-INF/familytree3.csv")));
 		try {
-			FileWriter fw = new FileWriter((wac.getServletContext()).getRealPath("output.csv"));
+			FileWriter fw = new FileWriter(file);
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (People people2 : familymembers) {
 				bw.write(people2.toString());
@@ -90,22 +94,31 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return familymembers;
+		System.out.println(familymembers);
+		file.renameTo(file2);
+		readFile();
+		return people;
 	}
 
 	@Override
-	public List<People> killPeople(People people) {
+	public boolean killPeople(People people) {
+		readFile();
+		boolean exists = false;
 		Iterator<People> iter = familymembers.iterator();
 		while (iter.hasNext()) {
 			People people1 = iter.next();
 
-			if ((people1.getFname()).equals(people.getFname()) && (people1.getLname()).equals(people.getLname())) {
+			if ((people1.getFname()).equals(people.getFname()) && (people1.getLname()).equals(people.getLname())
+					&& people1.getRelation().equals(people.getRelation())) {
+				exists = true;
 				iter.remove();
-
+				break;
 			}
 		}
+		File file = new File(((wac.getServletContext()).getRealPath("/WEB-INF/familytree2.csv")));
+		File file2 = new File(((wac.getServletContext()).getRealPath("/WEB-INF/familytree3.csv")));
 		try {
-			FileWriter fw = new FileWriter((wac.getServletContext()).getRealPath("output.csv"));
+			FileWriter fw = new FileWriter(file);
 			BufferedWriter bw = new BufferedWriter(fw);
 			for (People people2 : familymembers) {
 				bw.write(people2.toString());
@@ -116,7 +129,10 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return familymembers;
+		file.renameTo(file2);
+		readFile();
+		System.out.println(familymembers);
+		return exists;
 	}
 
 	public List<People> getSearchresults() {
@@ -125,10 +141,18 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 	@Override
 	public List<People> CurrentTree() {
-		try (InputStream is = wac.getServletContext().getResourceAsStream("output.csv");
+		readFile();
+		return familymembers;
+	}
+
+	public void readFile() {
+		familymembers.clear();
+		try (InputStream is = wac.getServletContext().getResourceAsStream("/WEB-INF/familytree3.csv");
 				BufferedReader buf = new BufferedReader(new InputStreamReader(is));) {
-			String line = buf.readLine();
+			System.out.println("trying");
+			String line = "";
 			while ((line = buf.readLine()) != null) {
+				System.out.println("trying2");
 				String[] tokens = line.split(",");
 				String relation = tokens[0];
 				String fname = tokens[1];
@@ -142,7 +166,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
-		return familymembers;
+
 	}
 
 }

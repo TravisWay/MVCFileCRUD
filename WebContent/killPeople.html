@@ -6,14 +6,14 @@
 </head>
 <body>
 	<h3>Delete a Family Member</h3>
-	<form action="killpeople.do" method="GET">
+	<form action="killpeople.do" method="POST">
 	
   	<br><br><br>
 		Name
-		<input type="text" name="lname" value="First Name"/>
-		<input type="text" name="fname" value="Last Name"/><br><br>
+		<input type="text" name="fname" value="First Name"/>
+		<input type="text" name="lname" value="Last Name"/><br><br>
 	Relation to You
-		<select>
+		<select name="relation">
   <option value="You">You</option>
   <option value="Sister">Sister</option>
   <option value="Brother">Brother</option>
