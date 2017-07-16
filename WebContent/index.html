@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Family Tree</title>
-  </head>
-  <head>Family Tree</head>
-  <body>
-  	Search by Name
-    <form action="searchname.do" method="GET">
-      <input type="text" name="data" /><br />
-      <input type="submit" value="Search" /><br />
-    </form><br>
-   	Look at the current Family Tree
-    <form action="viewtree.do" method="POST">
-      <input type="submit" value="View" /><br />
-    </form><br>
-    Search for Relation to you
-    <form action="searchrelation.do" method="GET">
-      <select name="relation">
-  <option value="You">You</option>
-  <option value="Sister">Sister</option>
-  <option value="Brother">Brother</option>
-  <option value="Daughter">Daughter</option>
-  <option value="Son">Son</option>
-  <option value="Mother">Mother</option>
-  <option value="Father">Father</option>
-  <option value="Aunt">Aunt</option>
-  <option value="Uncle">Uncle</option>
-  <option value="Niece">Niece</option>
-  <option value="Nephew">Nephew</option>
-  <option value="Cousin">Cousin</option>
-  <option value="Grandmother mother">Grandma(mother's side)</option>
-  <option value="Grandmother father">Grandma(father's side)</option>
-  <option value="Grandfather mother">Grandfather(mother's side)</option>
-  <option value="Grandfather father">Grandfather(mother's side)</option>
-  <option value="GreatGrandmother mother">GreatGrandma(mother's side)</option>
-  <option value="GreatGrandmother father">GreatGrandma(father's side)</option>
-  <option value="GreatGrandfather mother">GreatGrandfather(mother's side)</option>
-  <option value="GreatGrandfather father">GreatGrandfather(mother's side)</option>
-  	</select><br />
-      <input type="submit" value="Search" /><br />
-    </form><br>
-    
-      <a href="newPeople.html">Add a Family Member</a><br/>
-    <br>
-    
-    <a href="killPeople.html">Delete a Family Member</a><br/>
-  </body>
+<head>
+<meta charset="UTF-8">
+<title>Family Tree</title>
+</head>
+<head>Family Tree
+</head>
+<body>
+	Search by Name
+	<form action="searchname.do" method="GET">
+		<input type="text" name="data" /><br /> <input type="submit"
+			value="Search" /><br />
+	</form>
+	<br> Look at the current Family Tree
+	<form action="viewtree.do" method="GET">
+		<input type="submit" value="View" /><br />
+	</form>
+	<br> Search for Relation to you
+	<form action="searchrelation.do" method="GET">
+		<select name="relation">
+			<option value="You">You</option>
+			<option value="Sister">Sister</option>
+			<option value="Brother">Brother</option>
+			<option value="Daughter">Daughter</option>
+			<option value="Son">Son</option>
+			<option value="Mother">Mother</option>
+			<option value="Father">Father</option>
+			<option value="Aunt">Aunt</option>
+			<option value="Uncle">Uncle</option>
+			<option value="Niece">Niece</option>
+			<option value="Nephew">Nephew</option>
+			<option value="Cousin">Cousin</option>
+			<option value="Grandmother mother">Grandma(mother's side)</option>
+			<option value="Grandmother father">Grandma(father's side)</option>
+			<option value="Grandfather mother">Grandfather(mother's
+				side)</option>
+			<option value="Grandfather father">Grandfather(mother's
+				side)</option>
+			<option value="GreatGrandmother mother">GreatGrandma(mother's
+				side)</option>
+			<option value="GreatGrandmother father">GreatGrandma(father's
+				side)</option>
+			<option value="GreatGrandfather mother">GreatGrandfather(mother's
+				side)</option>
+			<option value="GreatGrandfather father">GreatGrandfather(mother's
+				side)</option>
+		</select><br /> <input type="submit" value="Search" /><br />
+	</form>
+	<br>
+
+	<a href="newPeople.html">Add a Family Member</a>
+	<br />
+	<br>
+
+	<a href="killPeople.html">Delete a Family Member</a>
+	<br />
+</body>
 </html>

@@ -10,7 +10,6 @@
 <body>
 	${result}
 	<br> Has been added to the Family Tree
-
 	<br>
 	<br>
 	<br>

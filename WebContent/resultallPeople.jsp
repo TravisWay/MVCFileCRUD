@@ -9,10 +9,8 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${! empty all}">
-			<c:forEach items="${all}" var="item">
-    			${item}<br>
-			</c:forEach>
+		<c:when test="${result}">
+			All members have been deleted.
 		</c:when>
 		<c:otherwise>
 			<p>No person found</p>
@@ -22,5 +20,7 @@
 	<br>
 	<br>
 	<a href="index.html">Go back</a>
+	<br>
+
 </body>
 </html>
