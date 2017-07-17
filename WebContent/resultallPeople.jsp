@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>View</title>
 </head>
-<body>
+<body style="margin: auto;width: 50%;padding: 10px;align-items:center;background-image: url('https://static.pexels.com/photos/56875/tree-dawn-nature-bucovina-56875.jpeg');">
 	<c:choose>
 		<c:when test="${result}">
 			All members have been deleted.

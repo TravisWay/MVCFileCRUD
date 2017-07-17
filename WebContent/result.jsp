@@ -4,62 +4,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--  <link href="style.css" rel="stylesheet">-->
+<link href="style.css" rel="stylesheet">
 <meta charset="utf-8">
 <title>Family Tree</title>
 </head>
-<body>
+<body style="margin: auto;width: 50%;padding: 10px;align-items:center;background-image: url('https://openclipart.org/image/2400px/svg_to_png/263892/Colorful-Natural-Tree.png');">
 
-	<c:forEach var="people" items="${all}">
-        Relation: ${people.key}  - People: ${people.value}
-    </c:forEach>
+
 	<div class="tree">
 		<ul>
-			<li><a href="nope.jsp"><c:forEach var="people"
-						items="${GreatGrandparents}">
-						<c:out value="${people.fname}" />
-						<br>
-						<br>
-					</c:forEach></a>
+			<c:forEach var="people" items="${GreatGrandparents}">
+				<li class="GreatGrandParents"><a href="nope.jsp"> <c:out
+							value="${people.fname}" /> <br> <br>
+				</a> <br> <br>
+			</c:forEach>
+
+
+			<c:forEach var="people" items="${Grandparents}">
 				<ul>
-					<li><a href="#"><c:forEach var="people"
-								items="${Grandparents}">
-								<c:out value="${people.fname}" />
-								<br>
-								<br>
-							</c:forEach></a>
-						<ul>
-							<li><a href="nope.jsp"><c:forEach var="people"
-										items="${Parents}">
-										<c:out value="${people.fname}" />
-										<br>
-										<br>
-									</c:forEach></a>
-								<ul>
-									<li><a href="nope.jsp"><c:forEach var="people"
-												items="${You}">
-												<c:out value="${people.fname}" />
-												<br>
-												<br>
-											</c:forEach></a>
-											</li>
-											<li>
-											<a href="nope.jsp"><c:forEach var="people"
-												items="${Siblings}">
-												<c:out value="${people.fname}" />
-												<br>
-												<br>
-											</c:forEach></a>
-											</li>
-										<ul>
-											<li><a href="nope.jsp"><c:forEach var="people"
-														items="${Children}">
-														<c:out value="${people.fname}" />
-														<br>
-														<br>
-													</c:forEach></a> <a href="index.html">Go back</a>
+					<li class="Grandparents"><a href="nope.jsp"> <c:out
+								value="${people.fname}" /> <br> <br>
+					</a> <br> <br>
+			</c:forEach>
+
+			<c:forEach var="people" items="${Parents}">
+				<ul>
+					<li class="Parents"><a href="nope.jsp"> <c:out
+								value="${people.fname}" /> <br> <br>
+					</a> <br>
+			</c:forEach>
+
+			<c:forEach var="people" items="${You}">
+				<ul>
+					<li class="You"><a href="nope.jsp"> <c:out
+								value="${people.fname}" /> <br> <br>
+					</a> <c:forEach var="people" items="${Children}">
+							<ul>
+								<li class="You"><a href="nope.jsp"> <c:out
+											value="${people.fname}" /> <br> <br>
+								</a> <br> <br></li>
+						</c:forEach>
+			</c:forEach>
+			</li>
+			<c:forEach var="people" items="${Siblings}">
+				<li class="Siblings"><a href="nope.jsp"> <c:out
+							value="${people.fname}" /> <br> <br>
+				</a> <br> <br></li>
+			</c:forEach>
+		</ul>
 	</div>
+
+	<br>
+	<br>
+	<a href="index2.html">Go back</a>
+
 </body>
+
+
 </html>
 
 

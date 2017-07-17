@@ -3,15 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add</title>
+<link href="style2.css" rel="stylesheet">
 </head>
 <body>
 	<h3>Delete a Family Member</h3>
 	<form action="killpeople.do" method="POST">
 
-		<br> <br> <br> Name <input type="text" name="fname"
-			value="First Name" /> <input type="text" name="lname"
+		<br> <br> <br> Name <input type="text" class="button" name="fname"
+			value="First Name" /> <input type="text" class="button" name="lname"
 			value="Last Name" /><br> <br> Relation to You <select
-			name="relation">
+			name="relation" class="select">
 			<option value="You">You</option>
 			<option value="Sister">Sister</option>
 			<option value="Brother">Brother</option>
@@ -34,12 +35,12 @@
 				side)</option>
 			<option value="GreatGrandfather">GreatGrandfather(mother's
 				side)</option>
-		</select><br> <br> <input type="submit" value="Delete Member" />
+		</select><br> <br> <input type="submit" class="button" value="Delete Family Member" />
 	</form>
-	<br>
-	<br>
+
 	<form action="killallpeople.do" method="POST">
-		<input type="submit" value="START OVER" />
+		<input type="submit" class="button" value="Delete All Members" /><br>
+		<a href="index2.html" class="button">Go back</a>
 	</form>
 </body>
 </html>

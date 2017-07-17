@@ -113,8 +113,8 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		while (iter.hasNext()) {
 			People people1 = iter.next();
 			if ((people1.getFname()).toLowerCase().equals(people.getFname().toLowerCase())
-					&& (people1.getLname().toLowerCase()).equals(people.getLname().toLowerCase())
-					&& (people1.getRelation().toLowerCase()).equals(people.getRelation().toLowerCase())) {
+					&& (people1.getLname().toLowerCase()).equals(people.getLname().toLowerCase()))
+					 {
 				exists = true;
 				iter.remove();
 				break;
@@ -186,6 +186,19 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		if (!familymembers.isEmpty()) {
 			familymembers.clear();
 
+		}
+		try {
+			FileWriter fw = new FileWriter((((wac.getServletContext()).getRealPath(FILE_NAME))));
+			BufferedWriter bw = new BufferedWriter(fw);
+			for (People people2 : familymembers) {
+				bw.write(people2.toString());
+				System.out.println("Done");
+			}
+			bw.flush();
+			bw.close();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		return delete;
