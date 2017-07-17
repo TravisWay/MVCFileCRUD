@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.accept.ParameterContentNegotiationStrategy;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,12 @@ public class crudController {
 	public ModelAndView getlist(HttpSession session, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result.jsp");
-		mv.addObject("all", familyTreeDAO.CurrentTree());
+		mv.addObject("Parents", familyTreeDAO.Relatives().get("Parents"));
+		mv.addObject("You", familyTreeDAO.Relatives().get("You"));
+		mv.addObject("Children", familyTreeDAO.Relatives().get("Children"));
+		mv.addObject("Grandparents", familyTreeDAO.Relatives().get("GrandParents"));
+		mv.addObject("GreatGrandparents", familyTreeDAO.Relatives().get("GreatGrandParents"));
+		mv.addObject("Sibling", familyTreeDAO.Relatives().get("Siblings"));
 		return mv;
 	}
 

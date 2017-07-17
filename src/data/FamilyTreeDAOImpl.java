@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -27,6 +29,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 	@Autowired
 	private WebApplicationContext wac;
+
 	// Upon startup, reads the .csv to enter family members if they are
 	// there(they are not in this case)
 	@PostConstruct
@@ -81,7 +84,8 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		readFile();
 		familymembers.add(people);
 		System.out.println(familymembers);
-		//File file = new File(((wac.getServletContext()).getRealPath(FILE_NAME)));
+		// File file = new
+		// File(((wac.getServletContext()).getRealPath(FILE_NAME)));
 		try {
 			FileWriter fw = new FileWriter((((wac.getServletContext()).getRealPath(FILE_NAME))));
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -108,14 +112,16 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		Iterator<People> iter = familymembers.iterator();
 		while (iter.hasNext()) {
 			People people1 = iter.next();
-			if ((people1.getFname()).toLowerCase().equals(people.getFname().toLowerCase()) && (people1.getLname().toLowerCase()).equals(people.getLname().toLowerCase())
+			if ((people1.getFname()).toLowerCase().equals(people.getFname().toLowerCase())
+					&& (people1.getLname().toLowerCase()).equals(people.getLname().toLowerCase())
 					&& (people1.getRelation().toLowerCase()).equals(people.getRelation().toLowerCase())) {
 				exists = true;
 				iter.remove();
 				break;
 			}
 		}
-		//File file = new File(((wac.getServletContext()).getRealPath(FILE_NAME)));
+		// File file = new
+		// File(((wac.getServletContext()).getRealPath(FILE_NAME)));
 		try {
 			FileWriter fw = new FileWriter((((wac.getServletContext()).getRealPath(FILE_NAME))));
 			BufferedWriter bw = new BufferedWriter(fw);
@@ -129,7 +135,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return exists;
 	}
 
@@ -152,9 +158,9 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	public void readFile() {
 		familymembers.clear();
 		System.out.println("attempting to read file " + familymembers);
-		
+
 		try {
-			
+
 			BufferedReader buf = new BufferedReader(new FileReader(wac.getServletContext().getRealPath(FILE_NAME)));
 			String line = "";
 			while ((line = buf.readLine()) != null) {
@@ -177,16 +183,96 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	@Override
 	public boolean DeleteAll() {
 		boolean delete = true;
-		if(!familymembers.isEmpty()){
+		if (!familymembers.isEmpty()) {
 			familymembers.clear();
-			
+
 		}
-		
+
 		return delete;
 	}
-	public List<List<People>> Relatives(){
+	@Override
+	public Map<String, ArrayList<People>> Relatives() {
+		CurrentTree();
+		List<People> siblings = new ArrayList<>();
+		List<People> parents = new ArrayList<>();
+		List<People> grandparents = new ArrayList<>();
+		List<People> greatgrandparents = new ArrayList<>();
+		List<People> children = new ArrayList<>();
+		List<People> you = new ArrayList<>();
 		
-		return null;
+		Map<String, ArrayList<People>> All = new HashMap<>();
+		
+		Iterator<People> iter = familymembers.iterator();
+		while (iter.hasNext()) {
+			People people = iter.next();
+			switch (people.getRelation()) {
+			case "You":
+				you.add(people);
+				break;
+			case "Sister":
+				siblings.add(people);
+				break;
+			case "Brother":
+				siblings.add(people);
+				break;
+			case "Daughter":
+				children.add(people);
+				break;
+			case "Son":
+				children.add(people);
+				break;
+			case "Mother":
+				parents.add(people);
+				break;
+			case "Father":
+				parents.add(people);
+				break;
+			case "Aunt":
+				break;
+			case "Uncle":
+				break;
+			case "Niece":
+				break;
+			case "Nephew":
+				break;
+			case "Cousin":
+				break;
+			case "Grandmother M":
+				grandparents.add(people);
+				break;
+
+			case "Grandmother F":
+				grandparents.add(people);
+				break;
+			case "Grandfather M":
+				grandparents.add(people);
+				break;
+			case "Grandfather F":
+				grandparents.add(people);
+				break;
+			case "GreatGrandmother M":
+				greatgrandparents.add(people);
+				break;
+			case "GreatGrandmother F":
+				greatgrandparents.add(people);
+				break;
+			case "GreatGrandfather M":
+				greatgrandparents.add(people);
+				break;
+			case "GreatGrandfather F":
+				greatgrandparents.add(people);
+				break;
+
+			}
+		}
+		All.put("GreatGrandParents", (ArrayList<People>) greatgrandparents);
+		All.put("GrandParents", (ArrayList<People>) grandparents);
+		All.put("Parents", (ArrayList<People>) parents);
+		All.put("You", (ArrayList<People>) you);
+		All.put("Children", (ArrayList<People>) children);
+		All.put("Sibling", (ArrayList<People>) siblings);
+		
+		return All;
 	}
 
 }
