@@ -12,8 +12,8 @@
 		<c:when test="${! empty all}">
 			<c:forEach var="people" items="${all}">
 				<c:out value="${people.relation}" /><br>
-				<c:out value="${people.lname}" /><br>
 				<c:out value="${people.fname}" /><br>
+				<c:out value="${people.lname}" /><br>
 				<c:out value="${people.age}" /><br>
 				<br>
 			</c:forEach>

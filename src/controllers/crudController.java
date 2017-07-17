@@ -31,11 +31,7 @@ public class crudController {
 	public ModelAndView getlist(HttpSession session, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result.jsp");
-		if (session.getAttribute("all") != null) {
-			mv.addObject("all", session.getAttribute("all"));
-		} else {
-			mv.addObject("all", familyTreeDAO.CurrentTree());
-		}
+		mv.addObject("all", familyTreeDAO.CurrentTree());
 		return mv;
 	}
 
@@ -44,7 +40,6 @@ public class crudController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result.jsp");
 		mv.addObject("result", familyTreeDAO.getPeopleByRelation(s));
-		session.setAttribute("result", familyTreeDAO.getPeopleByRelation(s));
 		return mv;
 	}
 
@@ -53,7 +48,6 @@ public class crudController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:addpeople2.do");
 		redir.addFlashAttribute("result", familyTreeDAO.addPeople(people));
-		session.setAttribute("all", familyTreeDAO.CurrentTree());
 		return mv;
 	}
 
