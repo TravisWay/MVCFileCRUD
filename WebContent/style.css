@@ -15,7 +15,7 @@
 	font-size: 14px;
 	margin: 4px 2px;
 	cursor: pointer;
-	-webkit-transition-duration: 0.4s; /* Safari */
+	-webkit-transition-duration: 0.4s; 
 	transition-duration: 0.4s;
 	border-radius: 8px;
 
@@ -27,7 +27,6 @@ body {
 	background-color: #a7d2e8;
 	background-image:
 		url('https://openclipart.org/image/2400px/svg_to_png/263892/Colorful-Natural-Tree.png');
-	
 }
 
 
@@ -50,9 +49,9 @@ body {
 	-moz-transition: all 0.5s;
 }
 
-/*We will use ::before and ::after to draw the connectors*/
+We will use ::before and ::after to draw the connectors*/
 
-/* .tree li::before, .tree li::after{
+.tree li::before, .tree li::after{
 	content: '';
 	position: absolute; top: 0; right: 50%;
 	border-top: 1px solid #ccc;
@@ -63,7 +62,7 @@ body {
 	border-left: 1px solid #ccc;
 } */
 
-/*We need to remove left-right connectors from elements without
+We need to remove left-right connectors from elements without
 any siblings*/
 .tree li:only-child::after, .tree li:only-child::before {
 	display: none;
@@ -108,7 +107,8 @@ right connector from last child*/
 	border: 1px solid #2daf32;
 	padding: 10px 15px;
 	text-decoration: none;
-	color: #2daf32;
+	font-weight:400;
+	color: green;
 	font-family: verdana;
 	font-size: 16px;
 	display: inline-block;

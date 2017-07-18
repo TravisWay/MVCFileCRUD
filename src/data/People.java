@@ -23,38 +23,7 @@ public class People {
 		this.relation = relation;
 		this.fname = fname;
 		this.lname = lname;
-		setTitle(relation);
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String relation) {
-		if ((this.relation.equals("Grandmother")) || (this.relation.equals("Grandfather"))) {
-			title = "Grandparent";
-		} else if ((this.relation.equals("Mother")) || (this.relation.equals("Father"))) {
-			title = "Parent";
-		} else if ((this.relation.equals("Brother")) || (this.relation.equals("Sister"))) {
-			title = "Sibling";
-		} else if ((this.relation.equals("Son")) || (this.relation.equals("Daughter"))) {
-			title = "Child";
-		} else if ((this.relation.equals("Greatgrandfather")) || (this.relation.equals("Greatgrandmother"))) {
-			title = "Greatgrandparent";
-		} else if (this.relation.equals("Cousin")) {
-			title = relation;
-		} else if (this.relation.equals("Niece") || this.relation.equals("Nephew")) {
-			title = relation;
-		}
-
-	}
-
-	public void setId(int id) {
-		this.id = id;
+		
 	}
 
 	public int getAge() {

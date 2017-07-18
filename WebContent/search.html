@@ -8,10 +8,11 @@
 
 <body>
 <h1>Family Tree</h1>
-	Search for Relation to you
+	Search by Relation
 	<form action="searchrelation.do" method="GET">
 		<select name="relation" class="select">
 			<option value="You">You</option>
+			<option value="Spouse">Spose</option>
 			<option value="Sister">Sister</option>
 			<option value="Brother">Brother</option>
 			<option value="Daughter">Daughter</option>
@@ -20,9 +21,6 @@
 			<option value="Father">Father</option>
 			<option value="Aunt">Aunt</option>
 			<option value="Uncle">Uncle</option>
-			<option value="Niece">Niece</option>
-			<option value="Nephew">Nephew</option>
-			<option value="Cousin">Cousin</option>
 			<option value="Grandmother mother">Grandma(mother's side)</option>
 			<option value="Grandmother father">Grandma(father's side)</option>
 			<option value="Grandfather mother">Grandfather(mother's
@@ -38,14 +36,14 @@
 			<option value="GreatGrandfather father">GreatGrandfather(mother's
 				side)</option>
 		</select><br /> <input type="submit" class="button" value="Search" /><br />
-	</form><br><br>
+	</form><br>
 	Search by Name
 	<form action="searchname.do" method="GET">
 	
 		<input type="text" class="button" name="data" /><br /> <input type="submit" class="button"
 			value="Search" /><br />
 
-	<br> <br><br>
+	<br><br>
 	<a href="index2.html" class="button">Go back</a>
 </body>
 </html>

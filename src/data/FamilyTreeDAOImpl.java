@@ -208,10 +208,12 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		CurrentTree();
 		List<People> siblings = new ArrayList<>();
 		List<People> parents = new ArrayList<>();
+		List<People> auntsUncles = new ArrayList<>();
 		List<People> grandparents = new ArrayList<>();
 		List<People> greatgrandparents = new ArrayList<>();
 		List<People> children = new ArrayList<>();
 		List<People> you = new ArrayList<>();
+		List<People> spouse = new ArrayList<>();
 		
 		Map<String, ArrayList<People>> All = new HashMap<>();
 		
@@ -220,6 +222,9 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 			People people = iter.next();
 			switch (people.getRelation()) {
 			case "You":
+				you.add(people);
+				break;
+			case"Spouse":	
 				you.add(people);
 				break;
 			case "Sister":
@@ -241,14 +246,10 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 				parents.add(people);
 				break;
 			case "Aunt":
+				auntsUncles.add(people);
 				break;
 			case "Uncle":
-				break;
-			case "Niece":
-				break;
-			case "Nephew":
-				break;
-			case "Cousin":
+				auntsUncles.add(people);
 				break;
 			case "Grandmother M":
 				grandparents.add(people);
@@ -278,8 +279,10 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 
 			}
 		}
+
 		All.put("GreatGrandParents", (ArrayList<People>) greatgrandparents);
 		All.put("GrandParents", (ArrayList<People>) grandparents);
+		All.put("AuntsUncles", (ArrayList<People>) auntsUncles);
 		All.put("Parents", (ArrayList<People>) parents);
 		All.put("You", (ArrayList<People>) you);
 		All.put("Children", (ArrayList<People>) children);
