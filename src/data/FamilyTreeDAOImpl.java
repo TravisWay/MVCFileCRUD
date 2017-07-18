@@ -157,7 +157,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 	// Reads the file and adds those members to the familymembers list.
 	public void readFile() {
 		familymembers.clear();
-		System.out.println("attempting to read file " + familymembers);
+		System.out.println("attempting to read file");
 
 		try {
 

@@ -24,8 +24,8 @@ public class crudController {
 	@RequestMapping(path = "searchname.do", method = RequestMethod.GET)
 	public ModelAndView getPeopleByName(@RequestParam("data") String s, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("result.jsp");
-		session.setAttribute("searchresults", familyTreeDAO.getPeopleByName(s));
+		mv.setViewName("resultsearch.jsp");
+		//session.setAttribute("searchresults", familyTreeDAO.getPeopleByName(s));
 		mv.addObject("result", familyTreeDAO.getPeopleByName(s));
 		return mv;
 	}
@@ -50,8 +50,8 @@ public class crudController {
 	@RequestMapping(path = "searchrelation.do", method = RequestMethod.GET)
 	public ModelAndView getPeopleByRelation(@RequestParam("relation") String s, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("result.jsp");
-		session.setAttribute("searchresultsRelation", familyTreeDAO.getPeopleByRelation(s));
+		mv.setViewName("resultsearch.jsp");
+		//session.setAttribute("searchresultsRelation", familyTreeDAO.getPeopleByRelation(s));
 		mv.addObject("result", familyTreeDAO.getPeopleByRelation(s));
 		return mv;
 	}

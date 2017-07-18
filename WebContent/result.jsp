@@ -34,7 +34,7 @@
 						<li class="Parents"><a href="nope.jsp"> <c:out
 									value="${people.fname}" /><br> <br> <c:out
 									value="${people.relation}" /><br> <br>
-						</a> <br>
+						</a> <br></li>
 					</c:forEach><c:forEach var="people" items="${AuntsUncles}">
 						<li class="AuntsUncles"><a href="nope.jsp"> <c:out
 									value="${people.fname}" /><br> <br> <c:out
@@ -47,7 +47,7 @@
 							<li class="You"><a href="nope.jsp"> <c:out
 										value="${people.fname}" /> <br> <br> <c:out
 										value="${people.relation}" /><br> <br>
-							<c:forEach var="people" items="${Spouse}">
+							<c:forEach var="people" items="${Sibling}">
 							<li class="You"><a href="nope.jsp"> <c:out
 										value="${people.fname}" /> <br> <br> <c:out
 										value="${people.relation}" /><br> <br>			
@@ -57,18 +57,12 @@
 													value="${people.fname}" /> <br> <c:out
 													value="${people.relation}" /> <br> <br>
 										</a> <br> <br></li>
-								
 								</c:forEach>
+									</ul>
 								</c:forEach>
 								
 						</c:forEach>
-					</ul>
-					<c:forEach var="people" items="${Sibling}">
-						<li class="Siblings"><a href="nope.jsp"> <c:out
-									value="${people.fname}" /><br> <br> <c:out
-									value="${people.relation}" /> <br> <br>
-						</a> <br> <br></li>
-					</c:forEach>
+					
 				</ul>
 				
 	</div>
