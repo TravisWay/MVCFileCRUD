@@ -19,11 +19,13 @@ import data.People;
 public class crudController {
 	@Autowired
 	private FamilyTreeDAO familyTreeDAO;
+	 
 
 	@RequestMapping(path = "searchname.do", method = RequestMethod.GET)
 	public ModelAndView getPeopleByName(@RequestParam("data") String s, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result.jsp");
+		session.setAttribute("searchresults", familyTreeDAO.getPeopleByName(s));
 		mv.addObject("result", familyTreeDAO.getPeopleByName(s));
 		return mv;
 	}
@@ -32,12 +34,16 @@ public class crudController {
 	public ModelAndView getlist(HttpSession session, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result.jsp");
+		session.getAttribute("searchresults");
+		session.getAttribute("searchresultsRelation");
 		mv.addObject("Parents", familyTreeDAO.Relatives().get("Parents"));
+		mv.addObject("Spouse", familyTreeDAO.Relatives().get("Spouse"));
 		mv.addObject("You", familyTreeDAO.Relatives().get("You"));
 		mv.addObject("Children", familyTreeDAO.Relatives().get("Children"));
 		mv.addObject("Grandparents", familyTreeDAO.Relatives().get("GrandParents"));
 		mv.addObject("GreatGrandparents", familyTreeDAO.Relatives().get("GreatGrandParents"));
 		mv.addObject("Sibling", familyTreeDAO.Relatives().get("Siblings"));
+		mv.addObject("AuntsUncles", familyTreeDAO.Relatives().get("AuntsUncles"));
 		return mv;
 	}
 
@@ -45,6 +51,7 @@ public class crudController {
 	public ModelAndView getPeopleByRelation(@RequestParam("relation") String s, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result.jsp");
+		session.setAttribute("searchresultsRelation", familyTreeDAO.getPeopleByRelation(s));
 		mv.addObject("result", familyTreeDAO.getPeopleByRelation(s));
 		return mv;
 	}
@@ -93,4 +100,6 @@ public class crudController {
 		mv.setViewName("resultallPeople.jsp");
 		return mv;
 	}
+
+	
 }

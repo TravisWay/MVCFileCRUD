@@ -225,7 +225,7 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 				you.add(people);
 				break;
 			case"Spouse":	
-				you.add(people);
+				spouse.add(people);
 				break;
 			case "Sister":
 				siblings.add(people);
@@ -285,8 +285,9 @@ public class FamilyTreeDAOImpl implements FamilyTreeDAO {
 		All.put("AuntsUncles", (ArrayList<People>) auntsUncles);
 		All.put("Parents", (ArrayList<People>) parents);
 		All.put("You", (ArrayList<People>) you);
+		All.put("Spouse", (ArrayList<People>) spouse);
 		All.put("Children", (ArrayList<People>) children);
-		All.put("Sibling", (ArrayList<People>) siblings);
+		All.put("Siblings", (ArrayList<People>) siblings);
 		
 		return All;
 	}
