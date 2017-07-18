@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="style2.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>View</title>
 </head>
-<body style="margin: auto;width: 50%;padding: 10px;align-items:center;background-image: url('https://static.pexels.com/photos/56875/tree-dawn-nature-bucovina-56875.jpeg');">
+<body>
 	<c:choose>
 		<c:when test="${result}">
 			All members have been deleted.
@@ -19,7 +20,7 @@
 	<br>
 	<br>
 	<br>
-	<a href="index.html">Go back</a>
+	<a href="index2.html" class="button">Go back</a>
 	<br>
 
 </body>

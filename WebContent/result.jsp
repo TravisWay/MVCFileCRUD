@@ -8,14 +8,15 @@
 <meta charset="utf-8">
 <title>Family Tree</title>
 </head>
-<body style="margin: auto;width: 50%;padding: 10px;align-items:center;background-image: url('https://openclipart.org/image/2400px/svg_to_png/263892/Colorful-Natural-Tree.png');">
+<body>
 
 
 	<div class="tree">
 		<ul>
 			<c:forEach var="people" items="${GreatGrandparents}">
 				<li class="GreatGrandParents"><a href="nope.jsp"> <c:out
-							value="${people.fname}" /> <br> <br>
+							value="${people.fname}"/> <br><br>
+							<c:out value="${people.relation}"/><br> <br>
 				</a> <br> <br>
 			</c:forEach>
 
@@ -23,32 +24,39 @@
 			<c:forEach var="people" items="${Grandparents}">
 				<ul>
 					<li class="Grandparents"><a href="nope.jsp"> <c:out
-								value="${people.fname}" /> <br> <br>
+								value="${people.fname}" /> <br><br>
+								<c:out value="${people.relation}"/><br>
+							<br>
 					</a> <br> <br>
 			</c:forEach>
 
 			<c:forEach var="people" items="${Parents}">
 				<ul>
 					<li class="Parents"><a href="nope.jsp"> <c:out
-								value="${people.fname}" /> <br> <br>
+								value="${people.fname}"/><br><br> 
+								<c:out value="${people.relation}"/><br>
+							<br>
 					</a> <br>
 			</c:forEach>
 
 			<c:forEach var="people" items="${You}">
 				<ul>
 					<li class="You"><a href="nope.jsp"> <c:out
-								value="${people.fname}" /> <br> <br>
+								value="${people.fname}"/> <br><br>
+								<c:out value="${people.relation}"/><br>
+							<br>
 					</a> <c:forEach var="people" items="${Children}">
 							<ul>
 								<li class="You"><a href="nope.jsp"> <c:out
-											value="${people.fname}" /> <br> <br>
+											value="${people.fname}" /> <c:out value="${people.relation}"/> <br> <br>
 								</a> <br> <br></li>
 						</c:forEach>
 			</c:forEach>
 			</li>
 			<c:forEach var="people" items="${Siblings}">
 				<li class="Siblings"><a href="nope.jsp"> <c:out
-							value="${people.fname}" /> <br> <br>
+							value="${people.fname}" /><br><br>
+							<c:out value="${people.relation}"/> <br> <br>
 				</a> <br> <br></li>
 			</c:forEach>
 		</ul>
@@ -56,7 +64,7 @@
 
 	<br>
 	<br>
-	<a href="index2.html">Go back</a>
+	<a href="index2.html" class="button">Go back</a>
 
 </body>
 

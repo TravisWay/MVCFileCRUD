@@ -6,15 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>View</title>
+<link href="style2.css" rel="stylesheet">
 </head>
-<body style="margin: auto;width: 50%;padding: 10px;align-items:center;background-image: url('https://static.pexels.com/photos/56875/tree-dawn-nature-bucovina-56875.jpeg');">
-	${result}
-	<br> Has been added to the Family Tree
+<body>
+	<p>${result}
+	<br> Has been added to the Family Tree</p>
 	<br>
-	<br>
-	<br>
-	<br>
+	
 
-	<a href="index.html">Go back</a>
+	<a href="index2.html" class="button">Go back</a>
 </body>
 </html>
